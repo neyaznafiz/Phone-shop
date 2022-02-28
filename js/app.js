@@ -16,11 +16,11 @@ loadSearchPhone()
 
 // display phone
 const displaySearchResult = phones => {
-    console.log(phones)
+    // console.log(phones)
     const searchResult = document.getElementById('search-result')
     // clear previous section
     searchResult.textContent = ''
-
+    // show result
     for (const phone of phones) {
         const div = document.createElement('div')
         div.classList.add('col')
@@ -34,7 +34,7 @@ const displaySearchResult = phones => {
         <h2> Brand:${phone.brand} </h2>
         <p>Model: ${phone.phone_name} </p>
         <p>ID: ${phone.slug} </p>
-        <button class="bg-primary rounded text-white m-2"> Explore More Details </button>
+        <button onclick="loadPhoneDetails('${phone.slug}')" class="bg-primary rounded text-white m-2"> Explore More Details </button>
         </div>
         </div>
         `
@@ -42,3 +42,28 @@ const displaySearchResult = phones => {
     }
 
 }
+
+
+// show phone details
+const loadPhoneDetails = phoneId => {
+
+    const phoneIdUrl = `https://openapi.programming-hero.com/api/phone/${phoneId}`
+
+    fetch(phoneIdUrl)
+        .then(res => res.json())
+        .then(data => displayPhoneDetails(data.data))
+}
+
+const displayPhoneDetails = phone => {
+    console.log(phone)
+    const showDetails = document.getElementById('show-details')
+    showDetails.innerHTML = `
+    <img src="${phone.image}" class="card-img-top" alt="...">
+    <div class="card-body">
+    <h2> Brand: ${phone.brand} </h2>
+    <h5> Model: ${phone.name}</h5>
+    <p> Release Date: ${phone.releaseDate}</p>
+    </div>
+    `
+}
+
