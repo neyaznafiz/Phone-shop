@@ -1,6 +1,14 @@
+// laoding event
+const loading = displayStyle => {
+    document.getElementById('loading').style.display = displayStyle
+}
+
 // get input value
 const loadSearchPhone = () => {
     const searchValue = document.getElementById('search-input')
+    // loading event handle
+    loading('block')
+
     const searchText = searchValue.value
     //  clear search value
     searchValue.value = ''
@@ -44,7 +52,8 @@ const displaySearchResult = phones => {
         `
         searchResult.appendChild(div)
     }
-
+    // loading event handle
+    loading('none')
 }
 
 
@@ -64,7 +73,7 @@ const displayPhoneDetails = phone => {
     showDetails.innerHTML = `
     <div  class="card mx-auto mt-4 shadow-lg p-2 rounded-4" style="width: 75%;">
 
-        div class="col-lg-6 mx-auto my-2"> 
+        <div class="col-lg-6 mx-auto my-2"> 
         <img src="${phone.image}" class="card-img-top">
         </div>
 
@@ -82,6 +91,6 @@ const displayPhoneDetails = phone => {
         </div>
     </div>
     `
-    
+
 }
 
