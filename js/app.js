@@ -4,6 +4,9 @@ const loadSearchPhone = () => {
     const searchText = searchValue.value
     //  clear search value
     searchValue.value = ''
+    // details section clear
+    const detailsSection = document.getElementById('show-details')
+    detailsSection.textContent = ''
 
     //  fetch url
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
@@ -61,23 +64,24 @@ const displayPhoneDetails = phone => {
     showDetails.innerHTML = `
     <div  class="card mx-auto mt-4 shadow-lg p-2 rounded-4" style="width: 75%;">
 
-<div class="col-lg-6 mx-auto my-2"> 
+        div class="col-lg-6 mx-auto my-2"> 
         <img src="${phone.image}" class="card-img-top">
-    </div>
+        </div>
 
-    <div class="card-body text-center">
-    <h2> Brand: ${phone.brand} </h2>
-    <h5> Model: ${phone.name}</h5>
-    <p> Release Date: ${phone.releaseDate} <br><br>
-     Storage: ${phone.mainFeatures.storage}<br><br>
-     Display: ${phone.mainFeatures.displaySize}<br><br>
-     Sensors: ${phone.mainFeatures.sensors}<br><br>
-     WLAN: ${phone.others.WLAN}<br><br>
-     Bluetooth: ${phone.others.Bluetooth}<br><br>
-     GPS: ${phone.others.GPS}<br><br>
-    </p>
+        <div class="card-body text-center">
+            <h2> Brand: ${phone.brand} </h2>
+            <h5> Model: ${phone.name}</h5>
+            <p> <span id="release-date">Release Date: ${phone.releaseDate}</span> <br><br>
+            ChipSet: ${phone.mainFeatures.chipSet}<br><br>
+            Storage: ${phone.mainFeatures.storage}<br><br>
+            Display: ${phone.mainFeatures.displaySize}<br><br>
+            Sensors: ${phone.mainFeatures.sensors}<br><br>
+            Bluetooth: ${phone.others.Bluetooth}<br><br>
+            GPS: ${phone.others.GPS}<br><br>
+            </p>
+        </div>
     </div>
-</div>
     `
+    
 }
 
