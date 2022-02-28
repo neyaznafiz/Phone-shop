@@ -25,7 +25,7 @@ const displaySearchResult = phones => {
         const div = document.createElement('div')
         div.classList.add('col')
         div.innerHTML = `
-        <div  class="card">
+        <div  class="card shadow-lg p-2">
         <div class="col-lg-6 mx-auto my-2"> 
         <img src="${phone.image}" class="card-img-top">
         </div>
@@ -34,7 +34,8 @@ const displaySearchResult = phones => {
         <h2> Brand:${phone.brand} </h2>
         <p>Model: ${phone.phone_name} </p>
         <p>ID: ${phone.slug} </p>
-        <button onclick="loadPhoneDetails('${phone.slug}')" class="bg-primary rounded text-white m-2"> Explore More Details </button>
+
+        <button onclick="loadPhoneDetails('${phone.slug}')" class="bg-dark border-0 shadow rounded text-white m-1 p-2"> Explore Details </button>
         </div>
         </div>
         `
@@ -58,12 +59,25 @@ const displayPhoneDetails = phone => {
     console.log(phone)
     const showDetails = document.getElementById('show-details')
     showDetails.innerHTML = `
-    <img src="${phone.image}" class="card-img-top" alt="...">
-    <div class="card-body">
+    <div  class="card mx-auto mt-4 shadow-lg p-2 rounded-4" style="width: 75%;">
+
+<div class="col-lg-6 mx-auto my-2"> 
+        <img src="${phone.image}" class="card-img-top">
+    </div>
+
+    <div class="card-body text-center">
     <h2> Brand: ${phone.brand} </h2>
     <h5> Model: ${phone.name}</h5>
-    <p> Release Date: ${phone.releaseDate}</p>
+    <p> Release Date: ${phone.releaseDate} <br><br>
+     Storage: ${phone.mainFeatures.storage}<br><br>
+     Display: ${phone.mainFeatures.displaySize}<br><br>
+     Sensors: ${phone.mainFeatures.sensors}<br><br>
+     WLAN: ${phone.others.WLAN}<br><br>
+     Bluetooth: ${phone.others.Bluetooth}<br><br>
+     GPS: ${phone.others.GPS}<br><br>
+    </p>
     </div>
+</div>
     `
 }
 
