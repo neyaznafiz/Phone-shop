@@ -6,12 +6,12 @@ const loading = displayStyle => {
 // get input value
 const loadSearchPhone = () => {
     const searchValue = document.getElementById('search-input')
-    // loading event handle
+    // loading spinner
     loading('block')
 
     const searchText = searchValue.value
 
-    // error handle  
+    // empty string error handle  
     if (searchText == '') {
         document.getElementById('error').style.display = 'block'
     }
@@ -32,8 +32,6 @@ const loadSearchPhone = () => {
     fetch(url)
         .then(res => res.json())
         .then(data => displaySearchResult(data.data.slice(0, 20)))
-
-
 }
 // loadSearchPhone()
 
@@ -53,7 +51,8 @@ const displaySearchResult = phones => {
     // clear previous section
     searchResult.textContent = ''
     // show result
-    for (const phone of phones) {
+
+    phones.forEach(phone => {
         const div = document.createElement('div')
         div.classList.add('col')
         div.innerHTML = `
@@ -72,8 +71,8 @@ const displaySearchResult = phones => {
             </div>
             `
         searchResult.appendChild(div)
-    }
-    // loading event handle
+    })
+    // loading spinner
     loading('none')
 
 }
@@ -100,7 +99,7 @@ const displayPhoneDetails = phone => {
             <div class="card-body text-center">
                 <h2> Brand: ${phone.brand} </h2>
                 <h5> Model: ${phone.name}</h5>
-                <p> <span id="release-date">Release Date: ${phone.releaseDate}</span> <br><br>
+                <p> <span id="release-date">Release Date: ${phone.releaseDate ? phone.releaseDate : 'Not found'}</span> <br><br>
                 ChipSet: ${phone.mainFeatures.chipSet}<br><br>
                 Storage: ${phone.mainFeatures.storage}<br><br>
                 Display: ${phone.mainFeatures.displaySize}<br><br>
