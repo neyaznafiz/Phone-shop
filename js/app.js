@@ -48,10 +48,11 @@ const displaySearchResult = phones => {
         document.getElementById('show-more').style.display = 'none'
     }
 
+
     // clear previous section
     searchResult.textContent = ''
-    // show result
 
+    // show result
     phones.forEach(phone => {
         const div = document.createElement('div')
         div.classList.add('col')
@@ -66,7 +67,7 @@ const displaySearchResult = phones => {
             <p>Model: ${phone.phone_name} </p>
             <p>ID: ${phone.slug} </p>
     
-            <button onclick="loadPhoneDetails('${phone.slug}')" class="bg-dark border-0 shadow rounded text-white m-1 p-2"> Explore Details </button>
+            <a href="#show-details" onclick="loadPhoneDetails('${phone.slug}')" class="bg-dark shadow  text-white m-1 p-2" style="border-radius: 10px; text-decoration: none;"> Explore Details </a>
             </div>
             </div>
             `
@@ -74,7 +75,6 @@ const displaySearchResult = phones => {
     })
     // loading spinner
     loading('none')
-
 }
 
 
@@ -92,9 +92,9 @@ const displayPhoneDetails = phone => {
     console.log(phone)
     const showDetails = document.getElementById('show-details')
     showDetails.innerHTML = `
-            <div  class="card mx-auto mt-4 shadow-lg p-2 rounded-4" style="width: 75%;">
-            <div class="col-lg-6 mx-auto my-2"> 
-            <img src="${phone.image}" class="card-img-top">
+            <div  class="card mx-auto mt-4 shadow-lg p-4 rounded-4" style="width: 100%;">
+            <div class="col-lg-6 mx-auto my-2 text-center"> 
+            <img src="${phone.image}" class="card-img-top w-50">
             </div>
             <div class="card-body text-center">
                 <h2> Brand: ${phone.brand} </h2>
@@ -104,12 +104,15 @@ const displayPhoneDetails = phone => {
                 Storage: ${phone.mainFeatures.storage}<br><br>
                 Display: ${phone.mainFeatures.displaySize}<br><br>
                 Sensors: ${phone.mainFeatures.sensors}<br><br>
-                Bluetooth: ${phone.others.Bluetooth}<br><br>
-                GPS: ${phone.others.GPS}<br><br>
+                Bluetooth: ${phone.others ? phone.others.Bluetooth: 'Information not found'}<br><br>
+                GPS: ${phone.others ? phone.others.GPS: 'Information not found'}<br><br>
+                WLAN: ${phone.others ? phone.others.WLAN: 'Information not found'}<br><br>
+                NFC: ${phone.others ? phone.others.NFC: 'Information not found'}<br><br>
+                Radio: ${phone.others ? phone.others.Radio: 'Information not found'}<br><br>
+                USB: ${phone.others ? phone.others.USB: 'Information not found'}<br><br>
                 </p>
             </div>
             </div>
     `
 
 }
-
