@@ -105,12 +105,12 @@ const displayPhoneDetails = phone => {
                 Storage: ${phone.mainFeatures.storage}<br><br>
                 Display: ${phone.mainFeatures.displaySize}<br><br>
                 Sensors: ${phone.mainFeatures.sensors}<br><br>
-                Bluetooth: ${phone.others ? phone.others.Bluetooth: 'Information not found'}<br><br>
-                GPS: ${phone.others ? phone.others.GPS: 'Information not found'}<br><br>
-                WLAN: ${phone.others ? phone.others.WLAN: 'Information not found'}<br><br>
-                NFC: ${phone.others ? phone.others.NFC: 'Information not found'}<br><br>
-                Radio: ${phone.others ? phone.others.Radio: 'Information not found'}<br><br>
-                USB: ${phone.others ? phone.others.USB: 'Information not found'}<br><br>
+                Bluetooth: ${phone.others ? phone.others.Bluetooth: 'Information not available'}<br><br>
+                GPS: ${phone.others ? phone.others.GPS: 'Information not available'}<br><br>
+                WLAN: ${phone.others ? phone.others.WLAN: 'Information not available'}<br><br>
+                NFC: ${phone.others ? phone.others.NFC: 'Information not available'}<br><br>
+                Radio: ${phone.others ? phone.others.Radio: 'Information not available'}<br><br>
+                USB: ${phone.others ? phone.others.USB: 'Information not available'}<br><br>
                 </p>
             </div>
             </div>
