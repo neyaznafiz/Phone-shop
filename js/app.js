@@ -99,19 +99,22 @@ const displayPhoneDetails = phone => {
             </div>
             <div class="card-body text-center">
                 <h2> Brand: ${phone.brand} </h2>
-                <h5> Model: ${phone.name}</h5>
-                <p> <span id="release-date">Release Date: ${phone.releaseDate ? phone.releaseDate : 'Not found'}</span> <br><br>
-                ChipSet: ${phone.mainFeatures.chipSet}<br><br>
-                Storage: ${phone.mainFeatures.storage}<br><br>
-                Display: ${phone.mainFeatures.displaySize}<br><br>
-                Sensors: ${phone.mainFeatures.sensors}<br><br>
-                Bluetooth: ${phone.others ? phone.others.Bluetooth: 'Information not available'}<br><br>
-                GPS: ${phone.others ? phone.others.GPS: 'Information not available'}<br><br>
-                WLAN: ${phone.others ? phone.others.WLAN: 'Information not available'}<br><br>
-                NFC: ${phone.others ? phone.others.NFC: 'Information not available'}<br><br>
-                Radio: ${phone.others ? phone.others.Radio: 'Information not available'}<br><br>
-                USB: ${phone.others ? phone.others.USB: 'Information not available'}<br><br>
-                </p>
+                <h4> Model: ${phone.name}</h4>
+                <p> Release Date: ${phone.releaseDate ? phone.releaseDate : 'Not found'}</p>
+
+                <h5> Main Features</h5>
+                <p>ChipSet: ${phone.mainFeatures.chipSet}</p>
+                <p>Storage: ${phone.mainFeatures.storage}</p>
+                <p>Display: ${phone.mainFeatures.displaySize}</p>
+                <p>Sensors: ${phone.mainFeatures.sensors}</p>
+
+                <h5> Others Features </h5>
+                <p>Bluetooth: ${phone.others ? phone.others.Bluetooth : 'Information not available'}</p>
+                <p>GPS: ${phone.others ? phone.others.GPS : 'Information not available'}</p>
+                <p>WLAN: ${phone.others ? phone.others.WLAN : 'Information not available'}</p>
+                <p>NFC: ${phone.others ? phone.others.NFC : 'Information not available'}</p>
+                <p>Radio: ${phone.others ? phone.others.Radio : 'Information not available'}</p>
+                <p>USB: ${phone.others ? phone.others.USB : 'Information not available'}</p>
             </div>
             </div>
     `
