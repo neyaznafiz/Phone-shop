@@ -11,13 +11,13 @@ const loadSearchPhone = () => {
 
     const searchText = searchValue.value
 
-// error handle  
-if(searchText == ''){
-    document.getElementById('error').style.display = 'block'
-}
-else{
-    document.getElementById('error').style.display = 'none'
-}
+    // error handle  
+    if (searchText == '') {
+        document.getElementById('error').style.display = 'block'
+    }
+    else {
+        document.getElementById('error').style.display = 'none'
+    }
 
     //  clear search value
     searchValue.value = ''
@@ -33,7 +33,7 @@ else{
         .then(res => res.json())
         .then(data => displaySearchResult(data.data.slice(0, 20)))
 
-        
+
 }
 // loadSearchPhone()
 
@@ -41,15 +41,22 @@ else{
 const displaySearchResult = phones => {
     // console.log(phones)
     const searchResult = document.getElementById('search-result')
-    
+
+    // show more button
+    if (phones.length == 20) {
+        document.getElementById('show-more').style.display = 'block'
+    }
+    else {
+        document.getElementById('show-more').style.display = 'none'
+    }
 
     // clear previous section
     searchResult.textContent = ''
     // show result
     for (const phone of phones) {
-            const div = document.createElement('div')
-            div.classList.add('col')
-            div.innerHTML = `
+        const div = document.createElement('div')
+        div.classList.add('col')
+        div.innerHTML = `
             <div  class="card shadow-lg p-2">
             <div class="col-lg-6 mx-auto my-2"> 
             <img src="${phone.image}" class="card-img-top">
@@ -64,11 +71,11 @@ const displaySearchResult = phones => {
             </div>
             </div>
             `
-            searchResult.appendChild(div)        
-    }    
+        searchResult.appendChild(div)
+    }
     // loading event handle
     loading('none')
-    
+
 }
 
 
@@ -104,6 +111,6 @@ const displayPhoneDetails = phone => {
             </div>
             </div>
     `
-    
+
 }
 
