@@ -23,7 +23,6 @@ const loadSearchPhone = () => {
     searchValue.value = ''
     // details section clear
     const detailsSection = document.getElementById('show-details')
-
     detailsSection.textContent = ''
 
     //  fetch url
@@ -37,7 +36,7 @@ const loadSearchPhone = () => {
 
 // display phone
 const displaySearchResult = phones => {
-    // console.log(phones)
+
     const searchResult = document.getElementById('search-result')
 
     // show more button
@@ -56,6 +55,7 @@ const displaySearchResult = phones => {
     phones.forEach(phone => {
         const div = document.createElement('div')
         div.classList.add('col')
+        // inner HTML
         div.innerHTML = `
             <div  class="card shadow-lg p-2">
             <div class="col-lg-6 mx-auto my-2"> 
@@ -73,7 +73,7 @@ const displaySearchResult = phones => {
             `
         searchResult.appendChild(div)
     })
-    // loading spinner
+    // loading spinner 
     loading('none')
 }
 
@@ -91,8 +91,9 @@ const loadPhoneDetails = phoneId => {
 const displayPhoneDetails = phone => {
     console.log(phone)
     const showDetails = document.getElementById('show-details')
+    // inner HTML
     showDetails.innerHTML = `
-            <div  class="card mx-auto mt-4 shadow-lg p-4 rounded-4" style="width: 100%;">
+            <div  class="card mx-auto mt-4 shadow-lg p-4 rounded-4">
             <div class="col-lg-6 mx-auto my-2 text-center"> 
             <img src="${phone.image}" class="card-img-top w-50">
             </div>
