@@ -17,6 +17,8 @@ const loadSearchPhone = () => {
     }
     else {
         document.getElementById('error').style.display = 'none'
+        
+
     }
 
     //  clear search value
@@ -30,7 +32,17 @@ const loadSearchPhone = () => {
 
     fetch(url)
         .then(res => res.json())
-        .then(data => displaySearchResult(data.data.slice(0, 20)))
+        .then(data => {
+            // false input error handle 
+            if (data.data.length == 0) {
+                document.getElementById('error').style.display = 'block'
+            }
+            else {
+                displaySearchResult((data.data.slice(0, 20)))
+                document.getElementById('error').style.display = 'none'
+            }
+        })
+        loading('none')
 }
 // loadSearchPhone()
 
@@ -93,7 +105,7 @@ const displayPhoneDetails = phone => {
     const showDetails = document.getElementById('show-details')
     // inner HTML
     showDetails.innerHTML = `
-            <div  class="card mx-auto mt-4 shadow-lg p-4 rounded-4">
+            <div  class="card mx-auto mt-4 shadow-lg p-4 rounded-4 flex">
             <div class="col-lg-6 mx-auto my-2 text-center"> 
             <img src="${phone.image}" class="card-img-top w-50">
             </div>
